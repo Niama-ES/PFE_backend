@@ -11,3 +11,8 @@ def send_user_query_to_kafka(user_query):
     data = {"query": user_query}
     producer.send('user-queries', data)
     producer.flush()
+
+def send_business_rules_to_kafka(business_rules):
+    data = {"rules": business_rules}
+    producer.send('business-rules', data)
+    producer.flush()
