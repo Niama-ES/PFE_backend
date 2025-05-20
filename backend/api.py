@@ -7,7 +7,7 @@ import pymongo
 from elasticsearch import Elasticsearch
 from bson.json_util import dumps
 
-#########################THE POWER OF ALLAH AND THE LUCK OF SRA9ZIT##############################
+#########################THE POWER OF ALLAH AND THE LUCK OF SRA9ZIT ##############################
 
 app = Flask(__name__)
 
