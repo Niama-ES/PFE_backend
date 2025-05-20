@@ -5,9 +5,9 @@ from kafka_consumer import consume_and_process
 from pymongo import MongoClient
 import pymongo
 from elasticsearch import Elasticsearch
-
-
 from bson.json_util import dumps
+
+#########################THE POWER OF ALLAH AND THE LUCK OF SRA9ZIT##############################
 
 app = Flask(__name__)
 
@@ -29,16 +29,19 @@ def get_business_rules():
     - dict: The business rules retrieved from MongoDB.
     """
     
-    client = get_mongo_client()
-    db = client['businessrules'] 
-    collection = db['rules']
+    client = get_mongo_client() 
+    db = client['admin'] 
+    # Print the available collections to ensure we are looking at the right collection
+    print("Collections in businessrules:", db.list_collection_names())
+    collection = db['Niama']
     
     """#method 2 directly from file 
     with open('aukhtubut-schema.dynamicDocument.json', 'r') as f:
       data = json.load(f)"""
 
     #business_rules = list(collection.find()) # Retrieve all documents
-    business_rules = list(collection.find())
+    business_rules = list(collection.find({"data": {"$exists": True}}))  # Ensure 'data' field exists
+    print(f"Number of business rules fetched: {len(business_rules)}")
 
     # Print the extracted business rules
     """for rule in business_rules:
@@ -72,7 +75,21 @@ def get_search_results(user_query):
     else:
        print("Could not connect to Elasticsearch.")
     
-    documents = es.search(index="university_index", body={"query": {"match": {"content": user_query}}})
+    #documents = es.search(index="university_index", query={"match": {"content": user_query}})
+    #documents = es.search(index="university_index", body={"query": {"match": {"content": user_query}}})
+    documents = es.search(index="university_index", body={
+    "query": {
+        "multi_match": {
+            "query": user_query,
+            "fields": ["*"]
+        }
+    }
+})
+    # Print the retrieved documents
+    for doc in documents['hits']['hits']:
+        print(f"Document ID: {doc['_id']}")
+        print(f"Document Source: {doc['_source']}")
+ 
     return documents
     
 
