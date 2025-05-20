@@ -30,10 +30,10 @@ def get_business_rules():
     """
     
     client = get_mongo_client() 
-    db = client['admin'] 
+    db = client['businessrules']  # Connect to the 'businessrules' database
     # Print the available collections to ensure we are looking at the right collection
     print("Collections in businessrules:", db.list_collection_names())
-    collection = db['Niama']
+    collection = db['rules']
     
     """#method 2 directly from file 
     with open('aukhtubut-schema.dynamicDocument.json', 'r') as f:
@@ -44,13 +44,12 @@ def get_business_rules():
     print(f"Number of business rules fetched: {len(business_rules)}")
 
     # Print the extracted business rules
-    """for rule in business_rules:
-        print(f"Rule ID: {rule['_id']}")
-        print(f"Name: {rule['name']}")
-        print(f"Description: {rule['description']}")
-        print(f"Conditions: {rule['conditions']}")
-        print(f"Action: {rule['mapping']['action']}")
-        print('---')"""
+    for idx, rule in enumerate(business_rules):
+            print(f"Document {idx + 1}:")
+            print(f"ID: {rule['_id']}")
+            print(f"Model: {rule['model']}")
+            print(f"Data: {rule['data']}")  # Printing the 'data' field which contains the actual business rule
+            print("-" * 50)  # Separator for better readability
      
     # If rules are found, return them, otherwise return a default message or empty dictionary
     if business_rules:
