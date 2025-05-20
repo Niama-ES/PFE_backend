@@ -34,23 +34,18 @@ def get_business_rules():
     # Print the available collections to ensure we are looking at the right collection
     print("Collections in businessrules:", db.list_collection_names())
     collection = db['rules']
-    
-    """#method 2 directly from file 
-    with open('aukhtubut-schema.dynamicDocument.json', 'r') as f:
-      data = json.load(f)"""
 
-    #business_rules = list(collection.find()) # Retrieve all documents
-    business_rules = list(collection.find({"data": {"$exists": True}}))  # Ensure 'data' field exists
+    #business_rules = list(collection.find({"data": {"$exists": True}}))  # Ensure 'data' field exists
+    business_rules = list(collection.find({}, {"_id": 0}))  # Exclude the '_id' field
     print(f"Number of business rules fetched: {len(business_rules)}")
 
-    # Print the extracted business rules
+    # Loop through each fetched document and print them in a readable format
     for idx, rule in enumerate(business_rules):
-            print(f"Document {idx + 1}:")
-            print(f"ID: {rule['_id']}")
-            print(f"Model: {rule['model']}")
-            print(f"Data: {rule['data']}")  # Printing the 'data' field which contains the actual business rule
-            print("-" * 50)  # Separator for better readability
-     
+        print(f"Document {idx + 1}:")
+        print(f"Model: {rule['model']}")  # Printing the 'model' field
+        print(f"Data: {rule['data']}")  # Printing the 'data' field which contains the actual business rule
+        print("-" * 50)  # Separator for better readability
+             
     # If rules are found, return them, otherwise return a default message or empty dictionary
     if business_rules:
         return business_rules  # Return the business rules as a dictionary
@@ -73,9 +68,7 @@ def get_search_results(user_query):
        print("Successfully connected to Elasticsearch!")
     else:
        print("Could not connect to Elasticsearch.")
-    
-    #documents = es.search(index="university_index", query={"match": {"content": user_query}})
-    #documents = es.search(index="university_index", body={"query": {"match": {"content": user_query}}})
+
     documents = es.search(index="university_index", body={
     "query": {
         "multi_match": {
