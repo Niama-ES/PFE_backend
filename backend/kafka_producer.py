@@ -16,3 +16,8 @@ def send_business_rules_to_kafka(business_rules):
     data = {"rules": business_rules}
     producer.send('business-rules', data)
     producer.flush()
+
+def send_elasticsearch_results_to_kafka(documents):
+    data = {"results": documents}
+    producer.send('elasticsearch-results', data)
+    producer.flush()
