@@ -7,8 +7,6 @@ import pymongo
 from elasticsearch import Elasticsearch
 from bson.json_util import dumps
 
-#########################THE POWER OF ALLAH AND THE LUCK OF SRA9ZIT ##############################
-
 app = Flask(__name__)
 
 #MongoDB connection setup   
@@ -35,16 +33,16 @@ def get_business_rules():
     print("Collections in businessrules:", db.list_collection_names())
     collection = db['rules']
 
-    #business_rules = list(collection.find({"data": {"$exists": True}}))  # Ensure 'data' field exists
-    business_rules = list(collection.find({}, {"_id": 0}))  # Exclude the '_id' field
+    #business_rules = list(collection.find({"data": {"$exists": True}}))  # we were using this before but it was not working
+    business_rules = list(collection.find({}, {"_id": 0}))  # Exclude the '_id' field 
     print(f"Number of business rules fetched: {len(business_rules)}")
 
     # Loop through each fetched document and print them in a readable format
     for idx, rule in enumerate(business_rules):
         print(f"Document {idx + 1}:")
-        print(f"Model: {rule['model']}")  # Printing the 'model' field
-        print(f"Data: {rule['data']}")  # Printing the 'data' field which contains the actual business rule
-        print("-" * 50)  # Separator for better readability
+        print(f"Model: {rule['model']}")  
+        print(f"Data: {rule['data']}")  
+        print("-" * 50)  
              
     # If rules are found, return them, otherwise return a default message or empty dictionary
     if business_rules:
@@ -52,8 +50,7 @@ def get_business_rules():
         #return json.loads(dumps(business_rules))
         #return [rule['data'] for rule in business_rules]  # Return the business rules
     else:
-        #return "no business rules found "  # Empty dictionary if no business rules found
-        return []
+        return [] 
 
 
 def get_search_results(user_query):
@@ -98,7 +95,7 @@ def send_query():
     business_rules = get_business_rules()
     print(f"Fetched {len(business_rules)} business rules from MongoDB")
 
-    # Send user query and business rules to Kafka
+    # Send user query and business rules and search results to Kafka
     send_user_query_to_kafka(user_query)
     send_business_rules_to_kafka(business_rules)
     send_elasticsearch_results_to_kafka(documents)
@@ -107,7 +104,7 @@ def send_query():
     if user_query:
         processed_result = consume_and_process()
 
-         # Print the response data to the terminal/console
+         # Print the response data to the terminal
         print("Response Data:", processed_result)
 
         return jsonify({

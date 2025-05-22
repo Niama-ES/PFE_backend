@@ -27,7 +27,7 @@ def send_elasticsearch_results_to_kafka(documents):
     if 'hits' in documents and 'hits' in documents['hits']:
         es_data = documents['hits']['hits']  # This is the actual search data
 
-        # If necessary, format or clean the data
+        # format the data
         formatted_data = [{'id': doc['_id'], 'source': doc['_source']} for doc in es_data]
 
         # Send to Kafka

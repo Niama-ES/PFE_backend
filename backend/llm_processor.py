@@ -20,19 +20,24 @@ def process_with_llm(user_query, business_rules, search_results):
 
     # Request payload
     data = {
-        "token": "sYTcKeH9bEtW7NPIwSlL4jc39TVu4g4T",  # Replace with your actual token
-        "lang": "ENGLISH",  # Or dynamically set the language if needed
+        "token": "sYTcKeH9bEtW7NPIwSlL4jc39TVu4g4T",  
+        "lang": "ENGLISH",  
         "prompt": prompt,
-        "fields": ""  # If needed, you can provide additional fields here
+        "fields": ""  
     }
 
     # Send POST request to the LLM API
     try:
+
+        print("Ylh Ansiftoh LLM API")  
+
         response = requests.post(url, json=data)
+
+        print("Everything went LLM API") 
 
         # Check if the request was successful
         if response.status_code == 200:
-            # Attempt to parse the response as JSON
+            # parse the response as JSON
             return response.json()
         else:
             # If the API request failed, return an error message
