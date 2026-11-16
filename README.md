@@ -1,17 +1,17 @@
 
 <div align="center">
 
-# ✦ Document Intelligence Platform
+# 🦋 Document Intelligence Platform
 
 ### Intelligent Document Analysis & Business Rule Automation
 
 <p>
-  <em>Transforming indexed documents into structured, AI-powered insights.</em>
+  <em>Turning complex documents into meaningful, AI-powered insights.</em>
 </p>
 
 ![Python](https://img.shields.io/badge/Backend-Python-355B82?style=flat-square&logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/Frontend-TypeScript-355B82?style=flat-square&logo=typescript&logoColor=white)
-![LLM](https://img.shields.io/badge/AI-Large_Language_Models-355B82?style=flat-square)
+![AI](https://img.shields.io/badge/AI-Large_Language_Models-355B82?style=flat-square)
 ![Kafka](https://img.shields.io/badge/Streaming-Apache_Kafka-355B82?style=flat-square&logo=apachekafka&logoColor=white)
 ![Elasticsearch](https://img.shields.io/badge/Search-Elasticsearch-355B82?style=flat-square&logo=elasticsearch&logoColor=white)
 ![Docker](https://img.shields.io/badge/Infrastructure-Docker-355B82?style=flat-square&logo=docker&logoColor=white)
@@ -20,15 +20,15 @@
 
 ---
 
-## ✦ Overview
+## 🦋 Overview
 
 The **Document Intelligence Platform** is an AI-powered document analysis system designed to automate the processing and interpretation of institutional documents.
 
 The platform processes documents such as academic transcripts, enrollment certificates, administrative attestations and formal requests. It combines full-text indexing, configurable business rules and Large Language Models (LLMs) to extract relevant information, evaluate document content and generate structured responses.
 
-By connecting document retrieval with rule-based validation and AI-driven inference, the platform aims to transform unstructured information into actionable, standardized results.
+By connecting document retrieval with rule-based validation and AI-driven inference, the platform transforms unstructured information into actionable, standardized results.
 
-## ✦ System Architecture
+## 🦋 System Architecture
 
 The platform follows a distributed, event-driven architecture composed of interconnected services responsible for document storage, indexation, business rule management, inference and user interaction.
 
@@ -40,13 +40,13 @@ The platform follows a distributed, event-driven architecture composed of interc
   <sub><i>Overall system architecture — Final-year project design.</i></sub>
 </p>
 
-## ✦ Project Scope & Contributions
+## 🦋 Project Scope & Contributions
 
 The project was developed as part of a final-year Licence project by a team of students.
 
 Our implementation focused primarily on the **Inference Service**, which acts as the intelligence layer connecting indexed document content, business rules and Large Language Models.
 
-### Inference Service
+### ✧ Inference Service
 
 - **Dynamic Context Construction:** Retrieves relevant indexed document content and combines it with applicable business rules.
 - **Business Rule Processing:** Evaluates configurable conditions and rule mappings stored in MongoDB.
@@ -55,7 +55,7 @@ Our implementation focused primarily on the **Inference Service**, which acts as
 - **Structured Output Generation:** Produces standardized JSON responses for downstream processing and institutional workflows.
 - **API Integration:** Exposes inference capabilities through backend APIs.
 
-### Wider Platform Architecture
+### ✧ Wider Platform Architecture
 
 The complete platform architecture also incorporates:
 
@@ -66,7 +66,7 @@ The complete platform architecture also incorporates:
 - **Frontend Console:** A TypeScript-based interface for managing projects, documents, rules and processing jobs.
 - **Containerization:** Docker for managing the platform's services and deployment environment.
 
-## ✦ Inference Workflow
+## 🦋 Inference Workflow
 
 1. **Retrieve** — The inference service receives a processing request and retrieves the relevant indexed document content.
 2. **Match** — Applicable business rules and their associated conditions are identified.
@@ -75,7 +75,7 @@ The complete platform architecture also incorporates:
 5. **Structure** — The generated response is validated and formatted into a standardized JSON output.
 6. **Store** — Inference results are persisted for further use within the platform.
 
-## ✦ Technology Stack
+## 🦋 Technology Stack
 
 | Component | Technologies |
 |:---|:---|
@@ -93,7 +93,7 @@ The complete platform architecture also incorporates:
 | API Testing | Postman |
 | Modeling & Design | UML |
 
-## ✦ Engineering Process
+## 🦋 Engineering Process
 
 Beyond implementation, the project covered several stages of the software engineering lifecycle:
 
@@ -105,7 +105,7 @@ Beyond implementation, the project covered several stages of the software engine
 - Version control and collaborative development using GitHub.
 - API testing and validation using Postman.
 
-## ✦ Project Information
+## 🦋 Project Information
 
 | Detail | Description |
 |:---|:---|
@@ -121,10 +121,12 @@ Beyond implementation, the project covered several stages of the software engine
 
 <div align="center">
 
-### ✦ Document Intelligence
+### 🦋 From Documents to Intelligence
 
-*Connecting business knowledge with artificial intelligence.*
+<p>
+  <em>Where structured knowledge meets artificial intelligence.</em>
+</p>
 
-**Engineered through collaboration. Driven by intelligent automation.**
+✦ Built with curiosity, collaboration & innovation ✦
 
 </div>
